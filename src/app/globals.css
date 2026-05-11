@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 247 248 250;
+  --fg: 17 24 39;
+  --card: 255 255 255;
+  --border: 226 232 240;
+  --muted: 100 116 139;
+  --accent: 59 130 246;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: 9 11 16;
+    --fg: 226 232 240;
+    --card: 17 24 39;
+    --border: 30 41 59;
+    --muted: 148 163 184;
+    --accent: 96 165 250;
+  }
+}
+
+html, body {
+  background-color: rgb(var(--bg));
+  color: rgb(var(--fg));
+}
+
+.card-surface {
+  background-color: rgb(var(--card));
+  border: 1px solid rgb(var(--border));
+}
+
+.btn {
+  @apply inline-flex items-center justify-center px-3 py-1.5 rounded-md text-sm font-medium transition;
+}
+.btn-primary {
+  background-color: rgb(var(--accent));
+  color: white;
+}
+.btn-outline {
+  border: 1px solid rgb(var(--border));
+}
+.chip {
+  @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs;
+  background-color: rgb(var(--border) / 0.5);
+}
