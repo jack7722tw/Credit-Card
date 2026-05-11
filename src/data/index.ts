@@ -1,11 +1,43 @@
 import type { Card, Benefit } from "@/lib/types";
+// User's own cards
+import * as ctbcAna from "./cards/ctbc-ana";
+import * as ctbcCal from "./cards/ctbc-cal";
+import * as esunWorld from "./cards/esun-world";
+import * as esunDajiang from "./cards/esun-dajiang";
+import * as esunUbear from "./cards/esun-ubear";
+import * as sinopacGreen from "./cards/sinopac-green";
+import * as dbsEco from "./cards/dbs-eco";
+import * as fubonJ from "./cards/fubon-j";
+import * as fubonMomo from "./cards/fubon-momo";
+import * as fubonCostco from "./cards/fubon-costco";
+import * as taishinRichart from "./cards/taishin-richart";
+import * as megaGogoro from "./cards/mega-gogoro";
+// Reference cards (for category comparison)
 import * as cathayCube from "./cards/cathay-cube";
 import * as esunPi from "./cards/esun-pi";
 import * as taishinFlygo from "./cards/taishin-flygo";
 import * as ctbcLinepay from "./cards/ctbc-linepay";
 import * as sinopacDawho from "./cards/sinopac-dawho";
 
-const MODULES = [cathayCube, esunPi, taishinFlygo, ctbcLinepay, sinopacDawho];
+const MODULES = [
+  ctbcAna,
+  ctbcCal,
+  esunWorld,
+  esunDajiang,
+  esunUbear,
+  sinopacGreen,
+  dbsEco,
+  fubonJ,
+  fubonMomo,
+  fubonCostco,
+  taishinRichart,
+  megaGogoro,
+  cathayCube,
+  esunPi,
+  taishinFlygo,
+  ctbcLinepay,
+  sinopacDawho,
+];
 
 export const ALL_CARDS: Card[] = MODULES.map((m) => m.card);
 export const ALL_BENEFITS: Benefit[] = MODULES.flatMap((m) => m.benefits);

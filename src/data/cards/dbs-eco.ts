@@ -1,0 +1,75 @@
+import type { Card, Benefit } from "@/lib/types";
+
+// 注意：以下為示範資料，最新權益請以銀行官網公告為準
+// Last reviewed: 2026-01
+
+export const card: Card = {
+  id: "dbs-eco",
+  bank: "星展銀行",
+  name: "eco 卡（Titanium）",
+  nameEn: "DBS eco Card",
+  type: "credit",
+  network: ["VISA"],
+  annualFee: 0,
+  annualFeeWaiver: "免年費",
+  officialUrl: "https://www.dbs.com.tw/personal-zh/cards/credit-cards/dbs-eco-card.page",
+  year: 2026,
+  tags: ["環保", "永續", "大眾運輸", "現金回饋"],
+};
+
+export const benefits: Benefit[] = [
+  {
+    id: "dbs-eco-transit",
+    cardId: "dbs-eco",
+    categoryId: "hsr",
+    title: "大眾運輸加碼回饋",
+    description: "高鐵、台鐵、捷運、客運、悠遊卡自動加值享加碼回饋。",
+    rewardType: "cashback",
+    rewardValue: 5,
+    rewardUnit: "%",
+    needsRegistration: true,
+    priorityScore: 85,
+    conditions: ["須登錄活動", "限指定 MCC", "回饋有月上限（請查證最新）"],
+    maxBenefitPerMonth: 500,
+    notes: "%與上限請以官網最新為準",
+  },
+  {
+    id: "dbs-eco-streaming",
+    cardId: "dbs-eco",
+    categoryId: "streaming",
+    title: "影音串流訂閱回饋",
+    description: "Netflix、Spotify、YouTube Premium 等指定串流加碼回饋。",
+    rewardType: "cashback",
+    rewardValue: 3,
+    rewardUnit: "%",
+    needsRegistration: true,
+    priorityScore: 70,
+    conditions: ["須登錄", "限指定串流平台"],
+  },
+  {
+    id: "dbs-eco-eco-shop",
+    cardId: "dbs-eco",
+    categoryId: "general",
+    title: "綠色 / 二手循環通路加碼",
+    description: "於環保概念通路（二手店、永續品牌等）消費享加碼回饋。",
+    rewardType: "cashback",
+    rewardValue: 3,
+    rewardUnit: "%",
+    needsRegistration: true,
+    priorityScore: 60,
+    conditions: ["限指定名單", "須登錄"],
+  },
+  {
+    id: "dbs-eco-base",
+    cardId: "dbs-eco",
+    categoryId: "general",
+    title: "一般消費基本回饋",
+    description: "一般通路刷卡基本現金回饋。",
+    rewardType: "cashback",
+    rewardValue: 0.5,
+    rewardUnit: "%",
+    needsRegistration: false,
+    priorityScore: 25,
+    conditions: ["一般刷卡"],
+  },
+];
