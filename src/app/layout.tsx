@@ -21,7 +21,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/my-benefits" className="hover:text-[rgb(var(--fg))]">我的權益</Link>
               <Link href="/categories" className="hover:text-[rgb(var(--fg))]">分類瀏覽</Link>
               <Link href="/cards" className="hover:text-[rgb(var(--fg))]">所有卡片</Link>
-              <Link href="/lookup" className="hover:text-[rgb(var(--fg))]">AI 查詢</Link>
             </nav>
           </div>
         </header>

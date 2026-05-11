@@ -10,7 +10,14 @@
 - **卡片詳情** — 單張卡片所有權益、年費、官方連結
 - **AI 即時查詢**（選用）— 資料庫沒有的卡，可呼叫 Claude API 即時查詢
 
-## 開始使用
+## 線上版本
+
+部署在 GitHub Pages：<https://jack7722tw.github.io/Credit-Card/>
+
+推到 `main` 或 `claude/credit-card-benefits-tool-0nNrf` 分支會自動重新部署
+（GitHub Actions：`.github/workflows/deploy.yml`）。
+
+## 本機開發
 
 ```bash
 npm install
@@ -18,17 +25,6 @@ npm run dev
 ```
 
 打開 <http://localhost:3000>。
-
-### 啟用 AI 查詢（選用）
-
-複製 `.env.example` 為 `.env.local`，填入你的 Anthropic API Key：
-
-```bash
-cp .env.example .env.local
-# 編輯 .env.local，貼上 ANTHROPIC_API_KEY
-```
-
-API Key 申請：<https://console.anthropic.com/>
 
 ## 加入新卡片
 
