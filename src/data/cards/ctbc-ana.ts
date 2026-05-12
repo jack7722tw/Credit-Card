@@ -12,7 +12,7 @@ export const card: Card = {
   network: ["VISA"],
   annualFee: 12000,
   annualFeeWaiver: "首年免年費；次年起依消費門檻減免（請參官網）",
-  officialUrl: "https://www.ctbcbank.com/twrbo/zh_tw/personal_credit_ana.html",
+  officialUrl: "https://www.ctbcbank.com/twrbo/zh_tw/cc_index/cc_product/cc_introduction_index/C_ANA.html",
   year: 2026,
   tags: ["哩程", "ANA", "高端", "Infinite", "機場貴賓室"],
 };
@@ -89,5 +89,28 @@ export const benefits: Benefit[] = [
     priorityScore: 75,
     conditions: ["須以本卡刷全額交通票款", "本人/配偶/未成年子女同行均涵蓋"],
     notes: "保額與延誤時數門檻請以保單為準",
+  },
+  {
+    id: "ctbc-ana-parking",
+    cardId: "ctbc-ana",
+    categoryId: "parking",
+    title: "市區停車優惠",
+    description:
+      "於配合停車場享免費停車時數，ANA 極緻卡/無限卡/商務御璽卡以「每戶」計算使用次數，門檻較有彈性，刷卡金額符合任一消費門檻即可使用。",
+    rewardType: "free_quota",
+    rewardValue: 2,
+    rewardUnit: "hours",
+    needsRegistration: true,
+    priorityScore: 75,
+    conditions: [
+      "每日免費停車 2 小時",
+      "每月上限 10 次",
+      "極緻卡 / 無限卡 / 商務御璽卡以「每戶」計算次數",
+      "需刷卡金額達對應任一消費門檻才能啟用",
+      "限配合的市區停車場（詳見市區停車權益網頁）",
+    ],
+    sourceUrl:
+      "https://www.ctbcbank.com/twrbo/zh_tw/cc_index/cc_product/cc_introduction_index/C_ANA.html",
+    notes: "配合停車場名單與當月消費門檻請以中信官網最新公告為準",
   },
 ];
