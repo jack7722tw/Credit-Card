@@ -1,6 +1,6 @@
 1:"$Sreact.fragment"
-2:I[1333,["/Credit-Card/_next/static/chunks/13h-0fd.p-1ga.js","/Credit-Card/_next/static/chunks/0d3shmwh5_nmn.js","/Credit-Card/_next/static/chunks/0l8v28mpo8g-m.js","/Credit-Card/_next/static/chunks/0rdn9x2s4j7nr.js"],"CategoryDetailClient"]
+2:I[1333,["/Credit-Card/_next/static/chunks/13h-0fd.p-1ga.js","/Credit-Card/_next/static/chunks/0d3shmwh5_nmn.js","/Credit-Card/_next/static/chunks/0n10emiic7wpl.js","/Credit-Card/_next/static/chunks/0mr62b~ep8k2_.js"],"CategoryDetailClient"]
 3:I[97367,["/Credit-Card/_next/static/chunks/13h-0fd.p-1ga.js","/Credit-Card/_next/static/chunks/0d3shmwh5_nmn.js"],"OutletBoundary"]
 4:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"id":"ecommerce"}],[["$","script","script-0",{"src":"/Credit-Card/_next/static/chunks/0l8v28mpo8g-m.js","async":true}],["$","script","script-1",{"src":"/Credit-Card/_next/static/chunks/0rdn9x2s4j7nr.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Lc54Eonu74XtC8xMGcM9f"}
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"id":"ecommerce"}],[["$","script","script-0",{"src":"/Credit-Card/_next/static/chunks/0n10emiic7wpl.js","async":true}],["$","script","script-1",{"src":"/Credit-Card/_next/static/chunks/0mr62b~ep8k2_.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"U8-u58HkFux2W-ZtSYbqN"}
 5:null
