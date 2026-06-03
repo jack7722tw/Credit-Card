@@ -12,12 +12,6 @@ import * as fubonMomo from "./cards/fubon-momo";
 import * as fubonCostco from "./cards/fubon-costco";
 import * as taishinRichart from "./cards/taishin-richart";
 import * as megaGogoro from "./cards/mega-gogoro";
-// Reference cards (for category comparison)
-import * as cathayCube from "./cards/cathay-cube";
-import * as esunPi from "./cards/esun-pi";
-import * as taishinFlygo from "./cards/taishin-flygo";
-import * as ctbcLinepay from "./cards/ctbc-linepay";
-import * as sinopacDawho from "./cards/sinopac-dawho";
 
 const MODULES = [
   ctbcAna,
@@ -32,11 +26,6 @@ const MODULES = [
   fubonCostco,
   taishinRichart,
   megaGogoro,
-  cathayCube,
-  esunPi,
-  taishinFlygo,
-  ctbcLinepay,
-  sinopacDawho,
 ];
 
 export const ALL_CARDS: Card[] = MODULES.map((m) => m.card);
