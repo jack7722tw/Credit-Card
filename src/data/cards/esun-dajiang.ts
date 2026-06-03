@@ -69,6 +69,7 @@ export const benefits: Benefit[] = [
     rewardType: "discount",
     rewardValue: 10,
     rewardUnit: "%",
+    rewardLabel: "9 折",
     needsRegistration: false,
     priorityScore: 60,
     conditions: ["限現場購票", "全票 9 折", "同場次每卡最多 4 張"],

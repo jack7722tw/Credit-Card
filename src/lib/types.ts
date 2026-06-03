@@ -67,6 +67,12 @@ export interface Benefit {
   rewardType: RewardType;
   rewardValue?: number;
   rewardUnit?: RewardUnit;
+  /**
+   * Explicit display string for the reward badge. Overrides the value/unit
+   * auto-format. Use when value/unit alone would be ambiguous, e.g. a mileage
+   * ratio ("20元/哩"), a flight bonus ("搭機 +50%"), or a discount ("9折").
+   */
+  rewardLabel?: string;
 
   // limits
   maxBenefitPerMonth?: number;

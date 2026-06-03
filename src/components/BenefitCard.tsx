@@ -3,25 +3,49 @@ import type { RankedBenefit } from "@/lib/types";
 import { CATEGORY_MAP } from "@/data/categories";
 
 function formatReward(b: RankedBenefit): string {
+  // Explicit override wins (used for ambiguous mileage ratios, discounts, etc.)
+  if (b.rewardLabel) return b.rewardLabel;
+
   if (b.rewardValue == null) {
     if (b.rewardType === "free_service") return "免費服務";
     if (b.rewardType === "fee_waiver") return "免手續費";
+    if (b.rewardType === "free_quota") return "免費";
     return "—";
   }
-  const u = b.rewardUnit ?? "";
-  switch (b.rewardType) {
-    case "cashback":
-      return `${b.rewardValue}${u} 現金回饋`;
-    case "points":
-      return `${b.rewardValue}${u} 點數`;
+
+  const v = b.rewardValue;
+  const n = v.toLocaleString();
+
+  // Percentage-based rewards
+  if (b.rewardUnit === "%") {
+    switch (b.rewardType) {
+      case "cashback":
+        return `${v}% 回饋`;
+      case "points":
+        return `${v}% 點數`;
+      case "miles":
+        return `${v}% 哩程`;
+      case "discount":
+        return `${v}% 折抵`;
+      default:
+        return `${v}%`;
+    }
+  }
+
+  // Fixed-amount and quota rewards — localise the unit
+  switch (b.rewardUnit) {
+    case "TWD":
+      return `$${n}`;
     case "miles":
-      return `${b.rewardValue} 哩`;
-    case "discount":
-      return `${b.rewardValue}${u} 折扣`;
-    case "free_quota":
-      return `${b.rewardValue} ${u}`;
+      return `${n} 哩`;
+    case "points":
+      return `${n} 點`;
+    case "times":
+      return `${n} 次`;
+    case "hours":
+      return `${n} 小時`;
     default:
-      return `${b.rewardValue}${u}`;
+      return n;
   }
 }
 
@@ -49,10 +73,14 @@ export function BenefitCard({ b, showRank = false }: { b: RankedBenefit; showRan
         <div className="text-right shrink-0">
           <div className="text-sm font-bold text-[rgb(var(--accent))]">{formatReward(b)}</div>
           {b.maxBenefitPerMonth != null && (
-            <div className="text-xs text-[rgb(var(--muted))]">月上限 ${b.maxBenefitPerMonth}</div>
+            <div className="text-xs text-[rgb(var(--muted))]">
+              月上限 ${b.maxBenefitPerMonth.toLocaleString()}
+            </div>
           )}
           {b.maxBenefitPerYear != null && (
-            <div className="text-xs text-[rgb(var(--muted))]">年上限 ${b.maxBenefitPerYear}</div>
+            <div className="text-xs text-[rgb(var(--muted))]">
+              年上限 ${b.maxBenefitPerYear.toLocaleString()}
+            </div>
           )}
         </div>
       </div>
@@ -103,7 +131,15 @@ export function BenefitCard({ b, showRank = false }: { b: RankedBenefit; showRan
             rel="noreferrer"
             className="text-[rgb(var(--accent))] hover:underline"
           >
-            預約 ↗
+            線上預約 ↗
+          </a>
+        )}
+        {b.bookingPhone && (
+          <a
+            href={`tel:${b.bookingPhone.replace(/[^0-9+]/g, "")}`}
+            className="text-[rgb(var(--accent))] hover:underline"
+          >
+            ☎ 預約專線 {b.bookingPhone}
           </a>
         )}
         {b.sourceUrl && !b.registrationLink && !b.bookingLink && (

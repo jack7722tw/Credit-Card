@@ -137,6 +137,7 @@ export const benefits: Benefit[] = [
     title: "⚠️ 2026 點數折抵改 30%",
     description: "原 100% 折抵帳單，自 2026/01/01 起改為最多折抵帳單金額的 30%。",
     rewardType: "discount",
+    rewardLabel: "折抵上限 30%",
     needsRegistration: false,
     priorityScore: 10,
     validFrom: "2026-01-01",

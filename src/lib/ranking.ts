@@ -17,12 +17,18 @@ export function isExpiringSoon(b: Benefit, now = new Date()): boolean {
 
 /**
  * Score a benefit for ranking. Higher = better.
- * Combines author-provided priorityScore, raw reward value, and freshness.
+ * Combines author-provided priorityScore, reward rate, and freshness.
+ *
+ * Only cashback / points percentages are treated as directly comparable
+ * "rates" — a discount % (e.g. 6 折 = 40% off) or a mileage bonus % is NOT
+ * the same kind of value and must not get the rate bonus. The bonus is also
+ * capped so a single headline promo cannot dominate structurally better cards.
  */
 export function scoreBenefit(b: Benefit, owned: boolean): number {
   let score = b.priorityScore ?? 0;
-  if (b.rewardUnit === "%" && typeof b.rewardValue === "number") {
-    score += b.rewardValue * 5; // 1% adds 5 points
+  const isRate = b.rewardType === "cashback" || b.rewardType === "points";
+  if (isRate && b.rewardUnit === "%" && typeof b.rewardValue === "number") {
+    score += Math.min(b.rewardValue, 12) * 4; // 1% ≈ 4 pts, capped at 12%
   }
   if (owned) score += 50;
   if (isExpired(b)) score -= 200;

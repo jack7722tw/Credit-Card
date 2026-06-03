@@ -13,7 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen flex flex-col">
         <header className="border-b border-[rgb(var(--border))] bg-[rgb(var(--card))]">
           <div className="max-w-5xl mx-auto px-4 py-3 flex items-center gap-6">
-            <Link href="/" className="font-bold text-lg">
+            <Link href="/" className="font-bold text-lg" aria-label="回首頁">
               💳 卡權益
             </Link>
             <nav className="flex gap-4 text-sm text-[rgb(var(--muted))]">

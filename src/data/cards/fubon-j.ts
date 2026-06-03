@@ -111,6 +111,7 @@ export const benefits: Benefit[] = [
     rewardType: "discount",
     rewardValue: 12,
     rewardUnit: "%",
+    rewardLabel: "88 折",
     needsRegistration: false,
     priorityScore: 50,
     validUntil: "2026-12-31",
