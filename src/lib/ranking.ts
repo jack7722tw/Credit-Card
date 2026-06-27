@@ -2,17 +2,27 @@ import type { Benefit, Card, RankedBenefit } from "./types";
 import { CARD_MAP } from "@/data";
 
 const SOON_DAYS = 30;
+const DAY_MS = 86400_000;
+
+/**
+ * Parse a "YYYY-MM-DD" validUntil as the END of that day in the viewer's
+ * local time. `new Date("2026-06-30")` is UTC midnight (~08:00 in Taiwan),
+ * which would wrongly mark a benefit expired on the morning of its last valid
+ * day. Appending a local end-of-day time keeps it valid through that whole day.
+ */
+function expiryInstant(validUntil: string): number {
+  return new Date(`${validUntil}T23:59:59`).getTime();
+}
 
 export function isExpired(b: Benefit, now = new Date()): boolean {
   if (!b.validUntil) return false;
-  return new Date(b.validUntil) < now;
+  return expiryInstant(b.validUntil) < now.getTime();
 }
 
 export function isExpiringSoon(b: Benefit, now = new Date()): boolean {
   if (!b.validUntil) return false;
-  const end = new Date(b.validUntil);
-  const diff = end.getTime() - now.getTime();
-  return diff > 0 && diff < SOON_DAYS * 86400_000;
+  const diff = expiryInstant(b.validUntil) - now.getTime();
+  return diff > 0 && diff < SOON_DAYS * DAY_MS;
 }
 
 /**
@@ -56,7 +66,14 @@ export function rankBenefits(
     })
     .filter(Boolean) as (RankedBenefit & { _score: number })[];
 
-  enriched.sort((a, b) => b._score - a._score);
+  // Deterministic ordering: score, then reward value, then id as a stable
+  // tiebreaker so equal-priority benefits never reshuffle between renders.
+  enriched.sort(
+    (a, b) =>
+      b._score - a._score ||
+      (b.rewardValue ?? 0) - (a.rewardValue ?? 0) ||
+      a.id.localeCompare(b.id),
+  );
   enriched.forEach((b, i) => {
     b.rank = i + 1;
   });

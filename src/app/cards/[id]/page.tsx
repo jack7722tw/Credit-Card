@@ -8,6 +8,8 @@ export function generateStaticParams() {
   return ALL_CARDS.map((c) => ({ id: c.id }));
 }
 
+export const dynamicParams = false;
+
 export default async function CardDetailPage({
   params,
 }: {

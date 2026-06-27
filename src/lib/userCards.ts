@@ -1,14 +1,25 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
+import { CARD_MAP } from "@/data";
 
 const KEY = "ccb.ownedCards.v1";
 
+/**
+ * Read owned card IDs from localStorage. Defensive against tampered/corrupted
+ * data (must be an array of strings) and drops IDs for cards that no longer
+ * exist in the dataset, while preserving every still-valid selection.
+ */
 export function readOwned(): string[] {
   if (typeof window === "undefined") return [];
   try {
     const v = window.localStorage.getItem(KEY);
-    return v ? (JSON.parse(v) as string[]) : [];
+    if (!v) return [];
+    const parsed: unknown = JSON.parse(v);
+    if (!Array.isArray(parsed)) return [];
+    return parsed.filter(
+      (id): id is string => typeof id === "string" && id in CARD_MAP,
+    );
   } catch {
     return [];
   }

@@ -33,7 +33,6 @@ export const benefits: Benefit[] = [
     needsRegistration: true,
     priorityScore: 92,
     maxBenefitPerMonth: 100,
-    minSpend: 0,
     conditions: [
       "需設定電子帳單 + 玉山帳戶自扣繳",
       "限指定平台：Netflix / Spotify / Disney+ / PlayStation / 任天堂",
